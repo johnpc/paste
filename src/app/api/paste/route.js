@@ -32,9 +32,9 @@ export async function POST(request) {
   const response = createdSnippet.data;
 
   // Build the URL
-  const url = new URL(request.headers.get('referer'))
+  const url = new URL(process.env.BASE_URL ?? request.headers.get('referer'))
   url.pathname = `/snippet/${response.id}`
-
+  console.log({url: url.toString()});
   return NextResponse.json({
     url: url.toString()
   })
