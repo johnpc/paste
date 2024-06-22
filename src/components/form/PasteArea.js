@@ -99,21 +99,6 @@ export default function PasteArea({ snippet = null }) {
   const { theme } = useTheme();
   const { dispatch } = useModal();
 
-  const setup = async () => {
-    try {
-      const clipboard = await navigator.clipboard.readText();
-      setForm({
-        ...form,
-        code: clipboard,
-      });
-    } catch (e) {
-      console.error(e);
-    }
-  };
-  useEffect(() => {
-    setup();
-  }, []);
-
   const onChange = (key, value) => {
     setForm({ ...form, [key]: value });
   };
