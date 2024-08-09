@@ -1,30 +1,34 @@
-'use client'
+"use client";
 
-import { Dialog } from '@headlessui/react'
-import { CheckIcon, ClipboardIcon, ArrowTopRightOnSquareIcon, CheckBadgeIcon } from '@heroicons/react/24/outline'
-import Button from '@/components/Button'
-import { useState } from 'react'
-import { useModal } from '@/providers/modal'
-import { copyToClipboard } from '@/lib/utils'
+import { Dialog } from "@headlessui/react";
+import {
+  CheckIcon,
+  ClipboardIcon,
+  ArrowTopRightOnSquareIcon,
+  CheckBadgeIcon,
+} from "@heroicons/react/24/outline";
+import Button from "@/components/Button";
+import { useState } from "react";
+import { useModal } from "@/providers/modal";
+import { copyToClipboard } from "@/lib/utils";
 
 export const Success = () => {
-  const { modalState } = useModal()
-  const [onCopySuccess, setOnCopySuccess] = useState(false)
-
+  const { modalState } = useModal();
+  const [onCopySuccess, setOnCopySuccess] = useState(false);
 
   const onCopy = () => {
-    setOnCopySuccess(true)
+    setOnCopySuccess(true);
 
-    copyToClipboard(modalState.meta.url)
+    copyToClipboard(modalState.meta.url);
 
     setTimeout(() => {
-      setOnCopySuccess(false)
-    }, 2000)
-  }
+      setOnCopySuccess(false);
+    }, 2000);
+  };
 
   const onGoToSnippet = () => {
-    window.location.href = modalState.meta.url
-  }
+    window.location.href = modalState.meta.url;
+  };
 
   return (
     <>
@@ -33,7 +37,10 @@ export const Success = () => {
           <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
         </div>
         <div className="mt-3 text-center sm:mt-5">
-          <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900 dark:text-white">
+          <Dialog.Title
+            as="h3"
+            className="text-base font-semibold leading-6 text-gray-900 dark:text-white"
+          >
             Snippet created
           </Dialog.Title>
           <div className="mt-2">
@@ -47,19 +54,14 @@ export const Success = () => {
         <Button
           Icon={onCopySuccess ? CheckBadgeIcon : ClipboardIcon}
           onClick={onCopy}
-          variant={onCopySuccess ? 'success' : 'primary'}
+          variant={onCopySuccess ? "success" : "primary"}
         >
-          { onCopySuccess ? 'Copied!' : 'Copy link'}
+          {onCopySuccess ? "Copied!" : "Copy link"}
         </Button>
-        <Button
-          Icon={ArrowTopRightOnSquareIcon}
-          onClick={onGoToSnippet}
-        >
+        <Button Icon={ArrowTopRightOnSquareIcon} onClick={onGoToSnippet}>
           Go to Snippet
         </Button>
       </div>
     </>
-  )
-}
-
-
+  );
+};

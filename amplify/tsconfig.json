@@ -9,9 +9,7 @@
     "strict": true,
     "skipLibCheck": true,
     "paths": {
-      "@env/*": [
-        "../.amplify/function-env/*"
-      ]
+      "@env/*": ["../.amplify/function-env/*"]
     }
   }
 }

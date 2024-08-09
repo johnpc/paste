@@ -113,6 +113,18 @@ export default function PasteArea({ snippet = null }) {
     }, 2000);
   };
 
+  const injectClipboardContents = async () => {
+    try {
+      const clipboard = await navigator.clipboard.readText();
+      setForm({
+        ...form,
+        code: clipboard,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -234,7 +246,7 @@ export default function PasteArea({ snippet = null }) {
                   <Button
                     Icon={ClipboardIcon}
                     loading={loading}
-                    onClick={setup}
+                    onClick={injectClipboardContents}
                   >
                     Use Clipboard
                   </Button>{" "}

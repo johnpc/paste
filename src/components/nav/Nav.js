@@ -1,36 +1,38 @@
-'use client'
+"use client";
 
-import { Fragment, useEffect } from 'react'
-import Item from './Item'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import DarkLightToggle from './DarkLightToggle'
-import MobileItem from './MobileItem'
-import Link from 'next/link'
-
+import { Fragment, useEffect } from "react";
+import Item from "./Item";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import DarkLightToggle from "./DarkLightToggle";
+import MobileItem from "./MobileItem";
+import Link from "next/link";
 
 export default function Nav() {
   useEffect(() => {
-    const nav = document.querySelector('nav')
-    const navTop = nav.offsetTop
+    const nav = document.querySelector("nav");
+    const navTop = nav.offsetTop;
 
     const stickyNav = () => {
       if (window.scrollY >= navTop) {
-        nav.classList.add('sticky')
+        nav.classList.add("sticky");
       } else {
-        nav.classList.remove('sticky')
+        nav.classList.remove("sticky");
       }
-    }
+    };
 
-    window.addEventListener('scroll', stickyNav)
+    window.addEventListener("scroll", stickyNav);
 
     return () => {
-      window.removeEventListener('scroll', stickyNav)
-    }
-  }, [])
+      window.removeEventListener("scroll", stickyNav);
+    };
+  }, []);
 
   return (
-    <Disclosure as="nav" className="w-full top-0 bg-white dark:bg-gray-800 shadow-lg z-50">
+    <Disclosure
+      as="nav"
+      className="w-full top-0 bg-white dark:bg-gray-800 shadow-lg z-50"
+    >
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -66,11 +68,13 @@ export default function Nav() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 pb-3 pt-2">
-              <MobileItem href="https://github.com/LiamAshdown/paste-app">Github</MobileItem>
+              <MobileItem href="https://github.com/LiamAshdown/paste-app">
+                Github
+              </MobileItem>
             </div>
           </Disclosure.Panel>
         </>
       )}
     </Disclosure>
-  )
+  );
 }

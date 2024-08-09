@@ -1,5 +1,5 @@
-import { encryptSnippet } from '@/lib/crypt'
-import { NextResponse } from 'next/server'
+import { encryptSnippet } from "@/lib/crypt";
+import { NextResponse } from "next/server";
 import { Amplify } from "aws-amplify";
 import config from "../../../../amplifyconfiguration.json";
 import { generateClient } from "aws-amplify/api";
@@ -13,9 +13,9 @@ const client = generateClient();
  * @returns {NextResponse} - The response object containing the encrypted code snippet.
  */
 export async function POST(request) {
-  const { title, code, expire, language } = await request.json()
+  const { title, code, expire, language } = await request.json();
 
-  const encrypted = encryptSnippet(code)
+  const encrypted = encryptSnippet(code);
 
   const encryptedCode = {
     title,
@@ -23,19 +23,19 @@ export async function POST(request) {
     iv: encrypted.iv,
     expire: expire.value,
     language: language.value,
-  }
+  };
 
-  console.log({encryptedCode});
+  console.log({ encryptedCode });
 
   const createdSnippet = await client.models.Snippet.create(encryptedCode);
-  console.log({createdSnippet, errors: createdSnippet.errors});
+  console.log({ createdSnippet, errors: createdSnippet.errors });
   const response = createdSnippet.data;
 
   // Build the URL
-  const url = new URL(process.env.BASE_URL ?? request.headers.get('referer'))
-  url.pathname = `/snippet/${response.id}`
-  console.log({url: url.toString()});
+  const url = new URL(process.env.BASE_URL ?? request.headers.get("referer"));
+  url.pathname = `/snippet/${response.id}`;
+  console.log({ url: url.toString() });
   return NextResponse.json({
-    url: url.toString()
-  })
+    url: url.toString(),
+  });
 }

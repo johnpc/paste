@@ -1,4 +1,4 @@
-import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
+import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
 const schema = a.schema({
   Snippet: a
@@ -9,7 +9,7 @@ const schema = a.schema({
       expire: a.integer().required(),
       language: a.string().required(),
     })
-    .authorization([a.allow.public('iam')]),
+    .authorization([a.allow.public("iam")]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -17,6 +17,6 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: 'iam',
+    defaultAuthorizationMode: "iam",
   },
 });

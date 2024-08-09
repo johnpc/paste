@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { useModal } from '@/providers/modal'
+import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { useModal } from "@/providers/modal";
 
 export const Modal = () => {
-  const { modalState, dispatch } = useModal()
+  const { modalState, dispatch } = useModal();
 
   const onClose = () => {
-    dispatch({ type: 'CLOSE_MODAL' });
-  }
+    dispatch({ type: "CLOSE_MODAL" });
+  };
 
   return (
     <Transition.Root show={modalState.isOpen} as={Fragment} appear={true}>
@@ -45,7 +45,7 @@ export const Modal = () => {
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

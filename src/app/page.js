@@ -1,4 +1,4 @@
-import PasteArea from '@/components/form/PasteArea'
+import PasteArea from "@/components/form/PasteArea";
 
 export default function Home() {
   return (
@@ -9,5 +9,5 @@ export default function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }

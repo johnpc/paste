@@ -1,13 +1,12 @@
-import crypto from 'crypto'
-
+import crypto from "crypto";
 
 const secretKey = crypto
-  .createHash('sha512')
+  .createHash("sha512")
   .update(process.env.SECRET_KEY)
-  .digest('hex')
-  .substring(0, 32)
+  .digest("hex")
+  .substring(0, 32);
 
-const encryptionMethod = 'aes-256-ctr'
+const encryptionMethod = "aes-256-ctr";
 
 /**
  * Encrypts the given data using a secret key and initialization vector (IV).
@@ -16,16 +15,16 @@ const encryptionMethod = 'aes-256-ctr'
  * @returns {{ iv: string, encryptedText: string }} An object containing the initialization vector (IV) and the encrypted text.
  */
 export const encryptSnippet = (data) => {
-  const iv = crypto.randomBytes(16)
-  const cipher = crypto.createCipheriv(encryptionMethod, secretKey, iv)
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv(encryptionMethod, secretKey, iv);
 
   return {
-    iv: iv.toString('hex'),
+    iv: iv.toString("hex"),
     encryptedText: Buffer.from(
-      cipher.update(data, 'utf8', 'hex') + cipher.final('hex')
-    ).toString()
-  }
-}
+      cipher.update(data, "utf8", "hex") + cipher.final("hex")
+    ).toString(),
+  };
+};
 
 /**
  * Decrypts the given data using the provided initialization vector (iv).
@@ -38,10 +37,10 @@ export const decryptSnippet = (data, iv) => {
   const decipher = crypto.createDecipheriv(
     encryptionMethod,
     secretKey,
-    Buffer.from(iv, 'hex')
-  )
+    Buffer.from(iv, "hex")
+  );
 
-  return Buffer.from(
-    decipher.update(data, 'hex') + decipher.final()
-  ).toString('utf8')
-}
+  return Buffer.from(decipher.update(data, "hex") + decipher.final()).toString(
+    "utf8"
+  );
+};

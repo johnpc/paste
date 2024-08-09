@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { ToastContainer, toast } from 'react-toastify'
-import { useTheme } from 'next-themes'
+import { ToastContainer, toast } from "react-toastify";
+import { useTheme } from "next-themes";
 
 const ToastContainerLayout = () => {
-  const { theme } = useTheme()
+  const { theme } = useTheme();
 
   return (
     <ToastContainer
@@ -17,7 +17,7 @@ const ToastContainerLayout = () => {
       pauseOnHover
       theme={theme}
     />
-  )
-}
+  );
+};
 
-export default ToastContainerLayout
+export default ToastContainerLayout;

@@ -1,22 +1,20 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import MemoryGame from 'react-card-memory-game'
+import { useEffect, useState } from "react";
+import MemoryGame from "react-card-memory-game";
 
 const CardGame = () => {
-  const [isIntialised, setIsInitialised] = useState(false)
+  const [isIntialised, setIsInitialised] = useState(false);
 
   useEffect(() => {
-    setIsInitialised(true)
-  }, [])
+    setIsInitialised(true);
+  }, []);
 
   if (!isIntialised) {
-    return null
+    return null;
   }
 
-  return (
-    <MemoryGame gridNumber={4}/>
-  )
-}
+  return <MemoryGame gridNumber={4} />;
+};
 
-export default CardGame
+export default CardGame;
