@@ -16,7 +16,7 @@ Deploy necessary resources to your personal AWS account via
 npx amplify sandbox
 ```
 
-This will populate the `amplifyconfiguration.json` file at the root of your project, which contains all configuration necessary to interact with the deployed resources.
+This will populate the `amplify_outputs.json` file at the root of your project, which contains all configuration necessary to interact with the deployed resources.
 
 ## Test the website
 

@@ -1,7 +1,7 @@
 import { decryptSnippet } from "@/lib/crypt";
 import { NextResponse } from "next/server";
 import { Amplify } from "aws-amplify";
-import config from "../../../../../amplifyconfiguration.json";
+import config from "../../../../../amplify_outputs.json";
 import { generateClient } from "aws-amplify/api";
 
 Amplify.configure(config);

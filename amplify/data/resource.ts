@@ -9,7 +9,7 @@ const schema = a.schema({
       expire: a.integer().required(),
       language: a.string().required(),
     })
-    .authorization([a.allow.public("iam")]),
+    .authorization(allow => [allow.guest()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
